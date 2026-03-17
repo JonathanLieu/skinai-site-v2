@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skin AI — Your skin, finally figured out.</title>
+<meta name="description" content="One photo. Your real skin type, every product conflict you didn't know about, and a personalized routine. Free early access now open.">
+<meta property="og:title" content="Skin AI — Your skin, finally figured out.">
+<meta property="og:description" content="Scan your face. Scan your shelf. Get a routine that's actually yours.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   SKIN AI — Redesigned Premium System
+   Aesthetic: Aesthetic: Aesop / Glossier / The Ordinary
+   Palette: warm ivory, deep umber, bark, blush, sage
+═══════════════════════════════════════════════ */
+
+:root {
+  --ivory:      #F9F5EF;
+  --ivory-warm: #F1EAE0;
+  --ivory-deep: #E8DDD0;
+  --umber:      #2A1A0E;
+  --umber-mid:  #5C3D24;
+  --bark:       #9B7248;
+  --bark-light: #C4A882;
+  --blush:      #E8C8B8;
+  --sage:       #8A9E82;
+  --terra:      #C4684A;
+  --mist:       #F5F0EA;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --section-pad: 8rem 10%;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ivory);
+  color: var(--umber);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Grain texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* ══════════════════════════════════════
+   NAV
+   A refined, minimalist bar.
+══════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 2rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s var(--ease-out);
+}
+
+nav.scrolled {
+  padding: 1.2rem 10%;
+  background: rgba(249, 245, 239, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(42, 26, 14, 0.05);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--umber);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--terra);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.nav-pill {
+  background: var(--umber);
+  color: var(--ivory);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-out);
+  border: 1px solid var(--umber);
+  font-family: var(--font-body);
+}
+
+.nav-pill:hover {
+  background: transparent;
+  color: var(--umber);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════
+   HERO
+   Large, editorial, luxurious.
+══════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 10rem 10% 5rem;
+  gap: 4rem;
+  position: relative;
+}
+
+.hero-left {
+  flex: 1.2;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-right {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-kicker::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--ivory-deep);
+  max-width: 60px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--umber);
+  margin-bottom: 2.5rem;
+}
+
+h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--bark);
+  opacity: 0.9;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--umber-mid);
+  line-height: 1.8;
+  max-width: 520px;
+  margin-bottom: 3.5rem;
+  font-weight: 300;
+}
+
+/* ── Signup form ── */
+.signup-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-fields {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-fields input {
+  flex: 1;
+  background: white;
+  border: 1px solid var(--ivory-deep);
+  padding: 1.2rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--umber);
+  outline: none;
+  transition: all 0.3s;
+  border-radius: 4px; /* More Aesop/minimalist */
+}
+
+.form-fields input:focus {
+  border-color: var(--umber);
+  box-shadow: 0 4px 20px rgba(42,26,14,0.05);
+}
+
+.btn-join {
+  background: var(--terra);
+  color: white;
+  border: none;
+  padding: 0 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-out);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(196, 104, 74, 0.2);
+}
+
+.btn-join:hover {
+  background: var(--umber);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(42, 26, 14, 0.15);
+}
+
+.btn-join:active {
+  transform: translateY(0);
+}
+
+.form-footnote {
+  font-size: 0.8rem;
+  color: var(--bark-light);
+  font-weight: 300;
+}
+
+/* ── Phone Mockup ── */
+.phone-mockup-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+.phone-shell {
+  background: #111;
+  border-radius: 50px;
+  padding: 12px;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 9/19;
+}
+
+.phone-screen {
+  background: var(--ivory);
+  border-radius: 38px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.phone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ══════════════════════════════════════
+   UPSELL CARD
+   Warm, inviting, premium offer.
+══════════════════════════════════════ */
+.upsell-card {
+  display: none;
+  background: #fff;
+  border: 1px solid var(--ivory-deep);
+  padding: 3rem;
+  margin-top: 2rem;
+  text-align: left;
+  border-radius: 8px;
+  box-shadow: 0 40px 80px rgba(42,26,14,0.08);
+}
+
+.upsell-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.upsell-headline {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--umber);
+}
+
+.upsell-price {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--umber);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.upsell-per { font-size: 1rem; color: var(--bark); }
+
+.upsell-features {
+  list-style: none;
+  margin-bottom: 2.5rem;
+}
+
+.upsell-feature {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--ivory-warm);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.btn-upsell {
+  width: 100%;
+  padding: 1.2rem;
+  background: var(--umber);
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.4s var(--ease-out);
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(42, 26, 14, 0.2);
+}
+
+.btn-upsell:hover {
+  background: var(--terra);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(196, 104, 74, 0.15);
+}
+
+/* ══════════════════════════════════════
+   MARQUEE
+   Restored animation for the "14 features" strip.
+══════════════════════════════════════ */
+.marquee-strip {
+  background: var(--umber);
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--ivory-warm);
+  margin-right: 4rem;
+  opacity: 0.8;
+  display: inline-flex;
+  align-items: center;
+}
+
+.marquee-sep {
+  width: 6px;
+  height: 6px;
+  background: var(--terra);
+  border-radius: 50%;
+  margin-left: 1rem;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* ══════════════════════════════════════
+   HOW IT WORKS / SECTIONS
+══════════════════════════════════════ */
+section {
+  padding: var(--section-pad);
+}
+
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-bottom: 3rem;
+  display: block;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--umber);
+  margin-bottom: 5rem;
+}
+
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.how-step {
+  border-top: 1px solid var(--ivory-deep);
+  padding-top: 2rem;
+}
+
+.step-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-style: italic;
+  color: var(--bark-light);
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.how-step h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ══════════════════════════════════════
+   CONFLICTS
+══════════════════════════════════════ */
+.conflicts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.conflict-card {
+  background: white;
+  padding: 3rem;
+  border: 1px solid var(--ivory-deep);
+  transition: all 0.4s var(--ease-out);
+  border-radius: 12px;
+  position: relative;
+}
+
+.conflict-card:hover { 
+  border-color: var(--bark);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(42,26,14,0.06);
+}
+
+.conflict-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.conflict-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--terra);
+  border-radius: 50%;
+}
+
+.conflict-products {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  color: var(--umber);
+}
+
+/* ══════════════════════════════════════
+   PRICING
+══════════════════════════════════════ */
+.section-stats {
+  background: var(--umber);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10rem 10%;
+  text-align: center;
+  color: var(--ivory-warm);
+  position: relative;
+}
+
+.stat-item {
+  position: relative;
+  padding: 0 2rem;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: rgba(249, 245, 239, 0.1);
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.stat-num em {
+  font-style: italic;
+  color: var(--bark-light);
+  font-size: 0.6em;
+  margin-left: 0.1em;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ══════════════════════════════════════
+   PRICING
+══════════════════════════════════════ */
+.pricing-grid {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: white;
+  padding: 4rem 3rem;
+  border: 1px solid var(--ivory-deep);
+  text-align: left;
+  position: relative;
+  border-radius: 12px;
+  transition: all 0.4s var(--ease-out);
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(42,26,14,0.08);
+}
+
+.pricing-card.featured {
+  background: #FFFBF7;
+  border-color: var(--bark);
+  box-shadow: 0 10px 40px rgba(155, 114, 72, 0.1);
+}
+
+.featured-tag {
+  position: absolute;
+  top: -15px;
+  left: 2rem;
+  background: var(--terra);
+  color: white;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.price-amount {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  line-height: 1;
+  margin: 1.5rem 0;
+  color: var(--umber);
+}
+
+.btn-pricing {
+  width: 100%;
+  padding: 1.1rem;
+  background: white;
+  border: 1px solid var(--umber);
+  color: var(--umber);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-out);
+  border-radius: 4px;
+}
+
+.btn-pricing:hover {
+  background: var(--umber);
+  color: white;
+}
+
+.btn-pricing.featured-btn {
+  background: var(--umber);
+  color: white;
+}
+
+.btn-pricing.featured-btn:hover {
+  background: var(--terra);
+  border-color: var(--terra);
+}
+
+/* ══════════════════════════════════════
+   SUCCESS PAGE STYLES (shared or specific)
+══════════════════════════════════════ */
+.success-hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 5rem;
+}
+
+.success-check {
+  width: 80px;
+  height: 80px;
+  background: var(--sage);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ══════════════════════════════════════
+   MOBILE
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  :root { --section-pad: 5rem 5%; }
+  .hero { flex-direction: column; padding-top: 8rem; text-align: center; }
+  .hero-right { display: none; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .form-fields { flex-direction: column; }
+  .signup-form { margin: 0 auto; }
+  .how-steps, .conflicts-grid, .pricing-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 4rem; }
+}
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.phone-mockup-wrapper {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Success banner state */
+.success-banner {
+  display: none;
+  margin-top: 2rem;
+  animation: slideIn 0.6s var(--ease-out) forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.success-banner.visible { display: block; }
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────── -->
+<nav id="nav">
+  <a href="/" class="logo">skin ai<span class="logo-dot"></span></a>
+  <button class="nav-pill" id="nav-btn">Join waitlist</button>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-left" id="hero-left">
+    <div class="hero-kicker">
+      AI skin analysis
+    </div>
+
+    <h1>
+      Your skin,<br>
+      <em>finally</em><br>
+      figured out.
+    </h1>
+
+    <p class="hero-sub">
+      One selfie. Your real skin type, every product conflict you didn't know about, and a routine that's actually built for your face — not a quiz template.
+    </p>
+
+    <div class="signup-form" id="hero-form-wrap">
+      <form id="hero-form">
+        <div class="form-fields">
+          <input type="text"  id="hero-name"  placeholder="First name" autocomplete="given-name">
+          <input type="email" id="hero-email" placeholder="Email address" required autocomplete="email">
+          <button class="btn-join" type="submit" id="hero-btn">
+            <span class="spinner"></span>
+            <span class="btn-text">Join free →</span>
+          </button>
+        </div>
+        <p class="form-footnote">Early access + founding pricing at launch.</p>
+      </form>
+      
+      <div class="success-banner" id="hero-success">
+        <div id="hero-success-msg"></div>
+        <!-- Upsell card — shown after free signup -->
+        <div class="upsell-card" id="hero-upsell">
+          <div class="upsell-label">Exclusive founding offer</div>
+          <div class="upsell-headline">Lock in founding pricing forever.</div>
+          <div class="upsell-price">
+            <span class="upsell-amount">$4.99</span>
+            <span class="upsell-per">/month</span>
+          </div>
+          <ul class="upsell-features">
+            <li class="upsell-feature"><span>Unlimited skin scans</span> <span>Included</span></li>
+            <li class="upsell-feature"><span>Ingredient conflict engine</span> <span>Full access</span></li>
+            <li class="upsell-feature"><span>Seasonal routine updates</span> <span>Included</span></li>
+            <li class="upsell-feature"><span>Price locked in forever</span> <span>Guaranteed</span></li>
+          </ul>
+          <button class="btn-upsell" id="hero-upsell-btn">
+            <span class="spinner"></span>
+            <span class="btn-text">Reserve founding price →</span>
+          </button>
+          <p class="form-footnote" style="text-align:center; margin-top:1rem;">You won't be charged until launch day.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="social-proof" id="hero-proof" style="display: none; opacity: 0; transition: opacity 1s var(--ease-out);">
+      <div class="avatars">
+        <div class="avatar-circle av-1">SK</div>
+        <div class="avatar-circle av-2">ML</div>
+        <div class="avatar-circle av-3">JH</div>
+        <div class="avatar-circle av-4">RP</div>
+      </div>
+      <div class="proof-text">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="width:6px; height:6px; background:#4CAF50; border-radius:50%; display:inline-block; animation: pulse 2s infinite;"></span>
+          <strong><span id="live-count">0</span> people</strong> on the waitlist.
+        </div>
+        <span style="font-size:0.85em; opacity:0.7;">Launching Spring 2026.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="phone-wrap">
+      <div class="phone-screen">
+        <img src="mockup_interface.png" alt="Skin AI App Interface">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ──────────────────────────────────────── -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item">Skin type analysis <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Ingredient conflict detection <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Personalized routines <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Product shelf scan <span class="marquee-sep"></span></span>
+    <span class="marquee-item">14 skin markers <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Barrier health <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Hydration analysis <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Morning + evening routines <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Skin type analysis <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Ingredient conflict detection <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Personalized routines <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Product shelf scan <span class="marquee-sep"></span></span>
+    <span class="marquee-item">14 skin markers <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Barrier health <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Hydration analysis <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Morning + evening routines <span class="marquee-sep"></span></span>
+  </div>
+</div>
+
+<!-- ── HOW IT WORKS ─────────────────────────────────── -->
+<section class="section-how" id="how">
+  <div class="section-label">How it works</div>
+  <h2>30 seconds.<br><em>Years of guesswork</em> gone.</h2>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-num">01</div>
+      <h3>Scan your face</h3>
+      <p>Take a selfie in natural light. Skin AI reads 14 markers — hydration, barrier health, oiliness, texture, pigmentation, fine lines, redness, and more. No equipment needed.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">02</div>
+      <h3>Scan your shelf</h3>
+      <p>Photograph your existing products. We identify every ingredient, flag every conflict, and tell you exactly what's working against you — and what you're missing entirely.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">03</div>
+      <h3>Get your routine</h3>
+      <p>Morning and evening steps, in exact application order, with notes for each product. Built from your actual skin data. Updated as your skin changes with seasons.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONFLICTS ────────────────────────────────────── -->
+<section class="section-conflicts" id="conflicts">
+  <div class="section-label">What we catch</div>
+  <h2>The conflicts hiding<br><em>in your bathroom cabinet</em></h2>
+  <p class="conflicts-sub">87% of our beta users had at least one. Most had two or three. These are the most common ones we detect automatically.</p>
+
+  <div class="conflicts-grid">
+    <div class="conflict-card">
+      <div class="conflict-badge badge-high">High impact</div>
+      <div class="conflict-products">Vitamin C <span class="conflict-plus">+</span> Retinol</div>
+      <p class="conflict-desc">Together they oxidize and deactivate each other. You're paying for two products that cancel out every night.</p>
+      <div class="conflict-fix">Use Vitamin C AM, retinol PM. Never together.</div>
+    </div>
+    <div class="conflict-card">
+      <div class="conflict-badge badge-high">High impact</div>
+      <div class="conflict-products">AHA/BHA <span class="conflict-plus">+</span> Retinol</div>
+      <p class="conflict-desc">Both break down skin cells. Combined on the same night, you're over-exfoliating and actively damaging your barrier.</p>
+      <div class="conflict-fix">Alternate nights. Never the same evening.</div>
+    </div>
+    <div class="conflict-card">
+      <div class="conflict-badge badge-medium">Medium impact</div>
+      <div class="conflict-products">Vitamin C <span class="conflict-plus">+</span> Niacinamide</div>
+      <p class="conflict-desc">Niacinamide converts Vitamin C into niacin, causing flushing and significantly reducing absorption of both.</p>
+      <div class="conflict-fix">Separate into different routines or wait 30 mins between.</div>
+    </div>
+    <div class="conflict-card">
+      <div class="conflict-badge badge-high">High impact</div>
+      <div class="conflict-products">Benzoyl Peroxide <span class="conflict-plus">+</span> Retinol</div>
+      <p class="conflict-desc">BP oxidizes retinol and makes it completely inactive. If you're using both, one of them is doing nothing.</p>
+      <div class="conflict-fix">Use BP AM, retinol PM. Completely separate routines.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ────────────────────────────────────────── -->
+<section class="section-stats">
+  <div class="stat-item">
+    <div class="stat-num">87<em>%</em></div>
+    <div class="stat-label">of beta users had at least one conflict</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">48<em>→79</em></div>
+    <div class="stat-label">average routine score before + after correction</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">14</div>
+    <div class="stat-label">skin markers analyzed in every scan</div>
+  </div>
+</section>
+
+<!-- ── PRICING ──────────────────────────────────────── -->
+<section class="section-pricing" id="pricing">
+  <div class="section-label" style="justify-content:center">Pricing</div>
+  <h2>Simple. No upsells.</h2>
+  <p class="pricing-sub">Waitlist members lock in founding pricing. Public launch price is 2× higher.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="price-tier">Free</div>
+      <div class="price-amount">$0</div>
+      <div class="price-note">Forever free</div>
+      <ul class="price-features">
+        <li class="price-feature"><span class="feature-dot"></span>1 full skin scan per month</li>
+        <li class="price-feature"><span class="feature-dot"></span>Basic skin type report</li>
+        <li class="price-feature"><span class="feature-dot"></span>3 product conflict checks</li>
+        <li class="price-feature"><span class="feature-dot"></span>Community routine templates</li>
+      </ul>
+      <button class="btn-pricing" id="pricing-free-btn">Join waitlist</button>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="featured-tag">Founding member — waitlist only</div>
+      <div class="price-tier">Premium</div>
+      <div class="price-amount" style="color:var(--ivory)">$4.99</div>
+      <div class="price-note">/month · locks in forever · $9.99 after launch</div>
+      <ul class="price-features">
+        <li class="price-feature"><span class="feature-dot"></span>Unlimited scans</li>
+        <li class="price-feature"><span class="feature-dot"></span>Full ingredient conflict engine</li>
+        <li class="price-feature"><span class="feature-dot"></span>Seasonal routine updates</li>
+        <li class="price-feature"><span class="feature-dot"></span>Progress photo tracking</li>
+        <li class="price-feature"><span class="feature-dot"></span>Personalized product swaps</li>
+      </ul>
+      <button class="btn-pricing featured-btn" id="pricing-premium-btn">Reserve founding price →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER CTA ────────────────────────────────────── -->
+<section class="section-footer-cta" id="footer-cta">
+  <div class="footer-cta-inner">
+    <h2>Your skin deserves<br><em>real answers.</em></h2>
+    <p>Not guesses. Not influencer recommendations. Not a generic quiz.</p>
+
+    <form class="footer-form" id="footer-form">
+      <input type="email" id="footer-email" placeholder="your@email.com" required autocomplete="email">
+      <button class="btn-join" type="submit" id="footer-btn">
+        <span class="spinner"></span>
+        <span class="btn-text">Join free</span>
+      </button>
+    </form>
+    <div class="success-banner" id="footer-success">
+      <div id="footer-success-msg"></div>
+      <div class="upsell-card" id="footer-upsell">
+        <div class="upsell-label">Founding member offer</div>
+        <div class="upsell-headline">Lock in <em>$4.99/month</em><br>before we launch.</div>
+        <div class="upsell-price">
+          <span class="upsell-amount">$4.99</span>
+          <span class="upsell-per">/month</span>
+          <span class="upsell-strikethrough">$9.99 after launch</span>
+        </div>
+        <ul class="upsell-features">
+          <li class="upsell-feature">Unlimited skin scans</li>
+          <li class="upsell-feature">Full ingredient conflict engine</li>
+          <li class="upsell-feature">Price locked in forever</li>
+        </ul>
+        <button class="btn-upsell" id="footer-upsell-btn">
+          <span class="spinner"></span>
+          <span class="btn-text">Reserve founding price →</span>
+        </button>
+        <p class="upsell-note">You won't be charged until launch day. Cancel anytime.</p>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-brand">
+        <span style="font-family: var(--font-display); font-style: italic; font-size: 1.5rem; color: var(--umber);">skin ai</span>
+        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.5rem;">Precision skincare for the modern face.</p>
+      </div>
+      <div style="display:flex; gap: 3rem; flex-wrap: wrap;">
+        <div class="footer-group">
+          <h4 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; opacity: 0.4;">Product</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#conflicts">Conflicts</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-group">
+          <h4 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; opacity: 0.4;">Support</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><a href="mailto:hello@tryskin.ai">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-group">
+          <h4 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; opacity: 0.4;">Legal</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(42, 26, 14, 0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; opacity: 0.5;">
+      <span>© 2026 Skin AI. All rights reserved.</span>
+      <span>Made with ✨ in San Francisco</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── TOAST ─────────────────────────────────────────── -->
+<div class="toast" id="toast"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════ -->
+<script src="/js/main.js"></script>
+
+</body>
+</html>

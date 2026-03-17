@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Success — Skin AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Same design system as index.html */
+:root {
+  --ivory:      #F9F5EF;
+  --umber:      #2A1A0E;
+  --bark:       #9B7248;
+  --sage:       #8A9E82;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+}
+body {
+  background: var(--ivory);
+  color: var(--umber);
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.4;
+}
+.container { max-width: 500px; padding: 2rem; position: relative; z-index: 10; }
+.icon {
+  width: 80px; height: 80px; background: var(--sage);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 2rem; margin: 0 auto 2.5rem;
+}
+h1 {
+  font-family: var(--font-display); font-size: 3.5rem; font-weight: 300;
+  margin-bottom: 1.5rem; color: var(--umber);
+}
+p { font-size: 1.1rem; line-height: 1.8; color: var(--bark); margin-bottom: 3rem; }
+.btn {
+  display: inline-block; padding: 1rem 2.5rem; background: var(--umber);
+  color: var(--ivory); text-decoration: none; border-radius: 4px;
+  text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem;
+  transition: opacity 0.3s;
+}
+.btn:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="icon">✦</div>
+  <h1>You're in.</h1>
+  <p>Thank you for becoming a founding member of Skin AI. Your special pricing is locked in forever. We'll reach out as soon as we launch in Spring 2026.</p>
+  <a href="/" class="btn">Return home</a>
+</div>
+</body>
+</html>
