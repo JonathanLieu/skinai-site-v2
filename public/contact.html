@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Skin AI</title>
+<meta name="description" content="Get in touch with the Skin AI team. We read every message.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/shared.css">
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="logo">skin ai<span class="logo-dot"></span></a>
+  <a href="/" class="nav-pill">Join waitlist</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-label">Contact</span>
+    <h1>We read<br><em>every email.</em></h1>
+    <p class="page-hero-sub">Questions, feedback, press inquiries, or just want to say hi — reach out. We're a small team and we actually respond.</p>
+  </div>
+</div>
+
+<section class="content-section">
+  <div class="contact-grid">
+
+    <div class="contact-info">
+      <h2>Get in touch</h2>
+      <p>We typically respond within 24 hours on weekdays. For urgent matters, email is fastest.</p>
+
+      <div class="contact-detail">
+        <a href="mailto:hello@tryskin.ai" class="contact-link">
+          <span class="contact-icon">✉</span>
+          hello@tryskin.ai
+        </a>
+        <a href="mailto:press@tryskin.ai" class="contact-link">
+          <span class="contact-icon">📰</span>
+          press@tryskin.ai
+        </a>
+      </div>
+
+      <div style="margin-top: 3rem; padding: 2rem; background: var(--ivory-warm); border-radius: 8px; border: 1px solid var(--ivory-deep);">
+        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--bark); margin-bottom: 0.75rem; font-weight: 600;">Before you write</div>
+        <p style="font-size: 0.9rem; color: var(--umber-mid); margin-bottom: 0; line-height: 1.7;">Check our <a href="/faq.html" style="color: var(--bark);">FAQ page</a> first — it covers most questions about how the product works, privacy, and pricing.</p>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.4; margin-bottom: 1rem;">Response time</div>
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <span style="width: 8px; height: 8px; background: var(--sage); border-radius: 50%; display: inline-block;"></span>
+          <span style="font-size: 0.9rem; color: var(--umber-mid);">Usually within 24 hours</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <form class="contact-form" id="contact-form">
+        <label for="contact-name">Your name</label>
+        <input type="text" id="contact-name" placeholder="Jane Smith" autocomplete="name">
+
+        <label for="contact-email">Email address</label>
+        <input type="email" id="contact-email" placeholder="jane@example.com" required autocomplete="email">
+
+        <label for="contact-subject">Subject</label>
+        <input type="text" id="contact-subject" placeholder="Question about the product" required>
+
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" placeholder="Tell us what's on your mind..." required></textarea>
+
+        <button type="submit" class="btn-submit" id="contact-submit">Send message →</button>
+
+        <div class="form-success" id="contact-success">
+          Thanks for reaching out! We'll get back to you within 24 hours.
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">skin ai</span>
+      <p>Precision skincare for the modern face.</p>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-group">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/how-it-works.html">How it works</a></li>
+          <li><a href="/conflicts.html">Conflicts</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy.html">Privacy</a></li>
+          <li><a href="/terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Skin AI. All rights reserved.</span>
+    <span>Made with ✨ in San Francisco</span>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('contact-submit');
+    const success = document.getElementById('contact-success');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    // Simulate send (replace with real API call if needed)
+    setTimeout(() => {
+      btn.style.display = 'none';
+      success.style.display = 'block';
+      document.getElementById('contact-form').reset();
+    }, 1000);
+  });
+</script>
+</body>
+</html>
