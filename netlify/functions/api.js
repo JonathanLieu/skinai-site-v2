@@ -105,7 +105,38 @@ app.post('/api/waitlist', async (req, res) => {
   }
 });
 
-// 3. Export Admin CSV
+// 3. Submit Contact Message
+app.post('/api/contact', async (req, res) => {
+  const { name, email, subject, message } = req.body;
+  if (!email || !message) {
+    return res.status(400).json({ error: 'Email and message are required' });
+  }
+
+  console.log(`Contact message from: ${email}`);
+
+  try {
+    const { error } = await supabase
+      .from('contact_messages')
+      .insert([{ 
+        name: name || '', 
+        email: email.toLowerCase().trim(), 
+        subject: subject || '', 
+        message 
+      }]);
+
+    if (error) {
+      console.error('Supabase Contact Error:', error);
+      throw error;
+    }
+
+    res.json({ success: true, message: 'Message received' });
+  } catch (err) {
+    console.error('API Contact Error:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// 4. Export Admin CSV
 app.get('/api/waitlist/export', async (req, res) => {
   const key = req.query.key;
   if (key !== ADMIN_KEY) return res.status(401).json({ error: 'Unauthorized' });

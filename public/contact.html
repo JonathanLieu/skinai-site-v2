@@ -124,18 +124,37 @@
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  document.getElementById('contact-form').addEventListener('submit', (e) => {
+  document.getElementById('contact-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('contact-submit');
     const success = document.getElementById('contact-success');
+    
+    const name = document.getElementById('contact-name').value;
+    const email = document.getElementById('contact-email').value;
+    const subject = document.getElementById('contact-subject').value;
+    const message = document.getElementById('contact-message').value;
+
     btn.textContent = 'Sending...';
     btn.disabled = true;
-    // Simulate send (replace with real API call if needed)
-    setTimeout(() => {
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message })
+      });
+      
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to send');
+
       btn.style.display = 'none';
       success.style.display = 'block';
       document.getElementById('contact-form').reset();
-    }, 1000);
+    } catch (err) {
+      btn.textContent = 'Send message →';
+      btn.disabled = false;
+      alert(err.message || 'Something went wrong. Please try again.');
+    }
   });
 </script>
 </body>
