@@ -7,9 +7,13 @@ const { createClient } = require('@supabase/supabase-js');
 const path = require('path');
 
 // ── CONFIG ──────────────────────────────────────────────────
-const SUPABASE_URL = process.env.SUPABASE_URL || 'https://tqaemkfvodaeauymsnno.supabase.co';
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxYWVta2Z2b2RhZWF1eW1zbm5vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzcxNTA4OCwiZXhwIjoyMDg5MjkxMDg4fQ.ckMonviRgmgNcORiFBWC8NAmrFMFsyDi00AUQvG_Ssw';
-const ADMIN_KEY = process.env.ADMIN_KEY || 'SkinAiSecretKey123451234512345';
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY;
+const ADMIN_KEY = process.env.ADMIN_KEY || 'change-me';
+
+if (!SUPABASE_URL || !SUPABASE_KEY) {
+  console.error('Missing SUPABASE_URL or SUPABASE_SERVICE_KEY environment variables');
+}
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -58,7 +62,7 @@ app.post('/api/waitlist', async (req, res) => {
       .eq('email', email.toLowerCase().trim())
       .single();
 
-    if (checkError && checkError.code !== 'PGRST116') { // PGRST116 is "no rows found"
+    if (checkError && checkError.code !== 'PGRST116') {
       console.error('Supabase Check Error:', checkError);
       throw checkError;
     }
@@ -162,17 +166,14 @@ app.get('/api/waitlist/export', async (req, res) => {
   }
 });
 
-// 4. Stripe Checkout Session (Placeholder logic)
+// 5. Stripe Checkout Session
 app.post('/api/checkout', async (req, res) => {
   const { email } = req.body;
   const stripeKey = process.env.STRIPE_SECRET_KEY;
   const priceId   = process.env.STRIPE_PRICE_ID;
   
-  // ── Local Mock Mode ─────────────────────────────────────────
-  // If NO keys are provided on localhost, return a mock success URL
-  // so the user can see the flow work without a real Stripe account.
   if (!stripeKey && (require.main === module || !process.env.NETLIFY)) {
-    console.warn('⚠️ STRIPE_SECRET_KEY missing. Returning mock checkout URL for local testing.');
+    console.warn('STRIPE_SECRET_KEY missing. Returning mock checkout URL for local testing.');
     return res.json({ 
       url: `${process.env.URL || 'http://localhost:3001'}/success.html?mock=true`,
       message: 'Running in MOCK mode (no Stripe keys found)'
@@ -189,7 +190,7 @@ app.post('/api/checkout', async (req, res) => {
       payment_method_types: ['card'],
       customer_email: email,
       line_items: [{
-        price: priceId || 'price_placeholder', // priceId is also required for real Stripe
+        price: priceId || 'price_placeholder',
         quantity: 1,
       }],
       mode: 'payment',
@@ -207,11 +208,9 @@ app.post('/api/checkout', async (req, res) => {
 module.exports.app = app;
 module.exports.handler = serverless(app);
 
-// Local runner (for testing before you upload)
 if (require.main === module) {
-  const PORT = 3001;
+  const PORT = process.env.PORT || 3001;
   app.listen(PORT, () => {
-    console.log(`\n🚀 Skin AI Local Preview: http://localhost:${PORT}`);
-    console.log(`\n(This mimics how Netlify will run your site)\n`);
+    console.log(`\nSkin AI Local Preview: http://localhost:${PORT}\n`);
   });
 }
