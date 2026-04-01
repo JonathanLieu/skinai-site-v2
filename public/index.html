@@ -1052,7 +1052,7 @@ h2 {
     </div>
     <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(42, 26, 14, 0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; opacity: 0.5;">
       <span>© 2026 Skin AI. All rights reserved.</span>
-      <span>Made with ✨</span>
+      
     </div>
   </div>
 </section>
@@ -1064,6 +1064,33 @@ h2 {
      JAVASCRIPT
 ════════════════════════════════════════════════════════ -->
 <script src="/js/main.js"></script>
+
+<!-- Scroll animations -->
+<script>
+// Smooth reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.how-step, .conflict-card, .pricing-card, .stat-item, section h2, .section-try-app').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+  observer.observe(el);
+});
+
+// Stagger delay for grid items
+document.querySelectorAll('.how-steps, .conflicts-grid, .pricing-grid').forEach(grid => {
+  grid.querySelectorAll('.how-step, .conflict-card, .pricing-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.1}s`;
+  });
+});
+</script>
 
 </body>
 </html>
