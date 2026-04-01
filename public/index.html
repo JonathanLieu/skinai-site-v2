@@ -770,6 +770,7 @@ h2 {
           </button>
         </div>
         <p class="form-footnote">Early access + founding pricing at launch.</p>
+        <a href="/app" style="display: inline-block; margin-top: 1.2rem; font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: var(--bark); text-decoration: none; border-bottom: 1px solid var(--bark-light); padding-bottom: 2px; transition: all 0.3s;" onmouseover="this.style.color='var(--terra)';this.style.borderColor='var(--terra)'" onmouseout="this.style.color='var(--bark)';this.style.borderColor='var(--bark-light)'">Or try the demo now →</a>
       </form>
       
       <div class="success-banner" id="hero-success">
@@ -830,7 +831,7 @@ h2 {
     <span class="marquee-item">Ingredient conflict detection <span class="marquee-sep"></span></span>
     <span class="marquee-item">Personalized routines <span class="marquee-sep"></span></span>
     <span class="marquee-item">Product shelf scan <span class="marquee-sep"></span></span>
-    <span class="marquee-item">14 skin markers <span class="marquee-sep"></span></span>
+    <span class="marquee-item">7 skin conditions <span class="marquee-sep"></span></span>
     <span class="marquee-item">Barrier health <span class="marquee-sep"></span></span>
     <span class="marquee-item">Hydration analysis <span class="marquee-sep"></span></span>
     <span class="marquee-item">Morning + evening routines <span class="marquee-sep"></span></span>
@@ -838,7 +839,7 @@ h2 {
     <span class="marquee-item">Ingredient conflict detection <span class="marquee-sep"></span></span>
     <span class="marquee-item">Personalized routines <span class="marquee-sep"></span></span>
     <span class="marquee-item">Product shelf scan <span class="marquee-sep"></span></span>
-    <span class="marquee-item">14 skin markers <span class="marquee-sep"></span></span>
+    <span class="marquee-item">7 skin conditions <span class="marquee-sep"></span></span>
     <span class="marquee-item">Barrier health <span class="marquee-sep"></span></span>
     <span class="marquee-item">Hydration analysis <span class="marquee-sep"></span></span>
     <span class="marquee-item">Morning + evening routines <span class="marquee-sep"></span></span>
@@ -853,7 +854,7 @@ h2 {
     <div class="how-step">
       <div class="step-num">01</div>
       <h3>Scan your face</h3>
-      <p>Take a selfie in natural light. Skin AI reads 14 markers — hydration, barrier health, oiliness, texture, pigmentation, fine lines, redness, and more. No equipment needed.</p>
+      <p>Take a selfie in natural light. Skin AI reads 7 key conditions — hydration, barrier health, texture, UV damage, fine lines, redness, and pigmentation. No equipment needed.</p>
     </div>
     <div class="how-step">
       <div class="step-num">02</div>
@@ -872,45 +873,53 @@ h2 {
 <section class="section-try-app" id="try-app" style="background: var(--umber); padding: 6rem 10%; text-align: center;">
   <div class="section-label" style="color: var(--bark-light); justify-content: center;">Try the beta</div>
   <h2 style="color: var(--ivory-warm); margin-bottom: 1.5rem;">Scan your face.<br><em>Right now.</em></h2>
-  <p style="color: var(--bark-light); max-width: 500px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.7; font-weight: 300;">
-    Point your phone camera at this QR code to try Skin AI instantly. No app download needed — opens right in your browser.
+  <p style="color: var(--bark-light); max-width: 500px; margin: 0 auto 2.5rem; font-size: 1.1rem; line-height: 1.7; font-weight: 300;">
+    No app download. No signup. Just your camera and 30 seconds.
   </p>
-  <div style="display: inline-block; background: var(--ivory); padding: 1.5rem; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
-    <img src="/qr-code.png" alt="Scan to try Skin AI" style="width: 220px; height: 220px; display: block;">
+
+  <!-- Try Demo Button -->
+  <a href="/app" style="display: inline-block; background: var(--terra); color: white; font-family: var(--font-body); font-size: 1rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 1.2rem 3rem; border-radius: 4px; margin-bottom: 3rem; transition: all 0.4s; box-shadow: 0 4px 20px rgba(196,104,74,0.3);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(196,104,74,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(196,104,74,0.3)'">
+    Try the demo free →
+  </a>
+
+  <p style="color: var(--bark-light); opacity: 0.5; font-size: 0.8rem; margin-bottom: 2.5rem;">or scan with your phone</p>
+
+  <div style="display: inline-block; background: var(--ivory); padding: 1.2rem; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+    <img src="/qr-code.png" alt="Scan to try Skin AI" style="width: 180px; height: 180px; display: block;">
   </div>
-  <p style="color: var(--bark-light); opacity: 0.6; margin-top: 2rem; font-size: 0.85rem;">Works on any iPhone or Android. No download required.</p>
+  <p style="color: var(--bark-light); opacity: 0.5; margin-top: 1.5rem; font-size: 0.8rem;">Works on any iPhone or Android.</p>
 </section>
 
 <!-- ── CONFLICTS ────────────────────────────────────── -->
 <section class="section-conflicts" id="conflicts">
   <div class="section-label">What we catch</div>
   <h2>The conflicts hiding<br><em>in your bathroom cabinet</em></h2>
-  <p class="conflicts-sub">87% of our beta users had at least one. Most had two or three. These are the most common ones we detect automatically.</p>
+  <p class="conflicts-sub">Most people have at least one product conflict they don't know about. These are the most common ones we detect.</p>
 
   <div class="conflicts-grid">
     <div class="conflict-card">
       <div class="conflict-badge badge-high">High impact</div>
       <div class="conflict-products">Vitamin C <span class="conflict-plus">+</span> Retinol</div>
-      <p class="conflict-desc">Together they oxidize and deactivate each other. You're paying for two products that cancel out every night.</p>
-      <div class="conflict-fix">Use Vitamin C AM, retinol PM. Never together.</div>
+      <p class="conflict-desc">These ingredients work best at different pH levels. Layering them at the same time can reduce the effectiveness of both.</p>
+      <div class="conflict-fix">Use Vitamin C in the morning, retinol at night. Simple split, full benefit.</div>
     </div>
     <div class="conflict-card">
       <div class="conflict-badge badge-high">High impact</div>
       <div class="conflict-products">AHA/BHA <span class="conflict-plus">+</span> Retinol</div>
-      <p class="conflict-desc">Both break down skin cells. Combined on the same night, you're over-exfoliating and actively damaging your barrier.</p>
-      <div class="conflict-fix">Alternate nights. Never the same evening.</div>
+      <p class="conflict-desc">Both are powerful exfoliants. Using them together — especially when you're starting out — can overwhelm your skin barrier and cause irritation.</p>
+      <div class="conflict-fix">Alternate nights until your skin builds tolerance. Start slow.</div>
     </div>
     <div class="conflict-card">
       <div class="conflict-badge badge-medium">Medium impact</div>
-      <div class="conflict-products">Vitamin C <span class="conflict-plus">+</span> Niacinamide</div>
-      <p class="conflict-desc">Niacinamide converts Vitamin C into niacin, causing flushing and significantly reducing absorption of both.</p>
-      <div class="conflict-fix">Separate into different routines or wait 30 mins between.</div>
+      <div class="conflict-products">High-dose Vitamin C <span class="conflict-plus">+</span> Strong Acids</div>
+      <p class="conflict-desc">Vitamin C (L-ascorbic acid) at high concentrations layered with other low-pH actives can cause irritation and reduce stability of both products.</p>
+      <div class="conflict-fix">Use vitamin C alone in the morning. Save other actives for PM.</div>
     </div>
     <div class="conflict-card">
       <div class="conflict-badge badge-high">High impact</div>
       <div class="conflict-products">Benzoyl Peroxide <span class="conflict-plus">+</span> Retinol</div>
-      <p class="conflict-desc">BP oxidizes retinol and makes it completely inactive. If you're using both, one of them is doing nothing.</p>
-      <div class="conflict-fix">Use BP AM, retinol PM. Completely separate routines.</div>
+      <p class="conflict-desc">Benzoyl peroxide can degrade some retinol formulations when applied together. The fix is simple — don't layer them at the same time.</p>
+      <div class="conflict-fix">Use BP in the morning, retinol at night. Modern formulations handle this well.</div>
     </div>
   </div>
 </section>
@@ -918,16 +927,16 @@ h2 {
 <!-- ── STATS ────────────────────────────────────────── -->
 <section class="section-stats">
   <div class="stat-item">
-    <div class="stat-num">87<em>%</em></div>
-    <div class="stat-label">of beta users had at least one conflict</div>
+    <div class="stat-num">3<em>in4</em></div>
+    <div class="stat-label">people have at least one product conflict</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">48<em>→79</em></div>
     <div class="stat-label">average routine score before + after correction</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">14</div>
-    <div class="stat-label">skin markers analyzed in every scan</div>
+    <div class="stat-num">7</div>
+    <div class="stat-label">skin conditions analyzed in every scan</div>
   </div>
 </section>
 
